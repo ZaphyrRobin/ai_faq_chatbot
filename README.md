@@ -79,8 +79,11 @@ mv mistral-7b-instruct-v0.1.Q4_0.gguf models/
 export LLM_MODEL_PATH="./models/mistral-7b-instruct-v0.1.Q4_0.gguf"
 ```
 
-### 5. Run the CLI
+### 5. CLI Examples
 ```
+# -v meaning enabled logging in INFO level
+# -u the page url that the web crawler starts from. Split in comma if multiple urls
+# -q the question string
 python3 main.py -v -u "https://makersplace.com/faq/" -q "What is MakersPlace?"
 ```
 
