@@ -10,3 +10,6 @@ LLM_MODEL_PATH = os.getenv("LLM_MODEL_PATH", "./models/mistral-7b-instruct-v0.1.
 # Please set it if needed
 # e.g export DATABASE_URL="postgresql+psycopg2://<user>:<password>@localhost:5432/<db_name>"
 DATABASE_URL = os.getenv("DATABASE_URL")
+
+# Embedding model
+EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"

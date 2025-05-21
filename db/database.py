@@ -1,11 +1,10 @@
-import os
 import logging
-from langchain_community.vectorstores.pgvector import PGVector
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_postgres.vectorstores import PGVector
 from settings import COLLECTION_NAME
 from settings import DATABASE_URL
 from sqlalchemy import create_engine
 from sqlalchemy import text
+from utils.embedding import get_embedding_function
 
 # SQLAlchemy engine
 engine = create_engine(DATABASE_URL)
@@ -20,11 +19,11 @@ def get_pg_connection():
     return DATABASE_URL
 
 def get_vector_store() -> PGVector:
-    embedding_function = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     return PGVector(
+        connection=DATABASE_URL,
         collection_name=COLLECTION_NAME,
-        connection_string=DATABASE_URL,
-        embedding_function=embedding_function,
+        embeddings=get_embedding_function(),
+        use_jsonb=True,
     )
 
 def clear_all_embeddings():

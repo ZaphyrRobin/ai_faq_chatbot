@@ -1,9 +1,10 @@
 import argparse
 import asyncio
 import logging
-from db.database import init_db, clear_all_embeddings
+from db.database import clear_all_embeddings
+from db.database import init_db
 from services.chatbot import get_answer
-from utils.faq_crawler import AsyncWebCrawler
+from utils.web_crawler import AsyncWebCrawler
 
 
 async def main():
@@ -31,12 +32,13 @@ async def main():
     urls = args.urls # e.g "https://makersplace.com/faq/"
 
     init_db() # run only once actually
-    clear_all_embeddings() # clear all embeddings
 
     # Web crawler
     if urls:
-        faq_crawler = AsyncWebCrawler(urls.split(","))
-        await faq_crawler.embed_all()
+        clear_all_embeddings() # Optional: clear all embeddings
+
+        web_crawler = AsyncWebCrawler(urls.split(","))
+        await web_crawler.embed_all()
 
     # Calling LLM to get the answer
     answer = get_answer(question)
