@@ -1,15 +1,12 @@
-import os
 import logging
-from llama_cpp import Llama
 from db.database import get_vector_store
+from llama_cpp import Llama
+from settings import LLM_MODEL_PATH
 
 logger = logging.getLogger(__name__)
 
-# Load quantized GGUF model (adjust path and threads)
-model_path = os.getenv("LLM_MODEL_PATH", "./models/mistral-7b-instruct-v0.1.Q4_0.gguf")
-
 llm = Llama(
-    model_path=model_path,
+    model_path=LLM_MODEL_PATH,
     n_ctx=2048,
     n_threads=4,
     verbose=False

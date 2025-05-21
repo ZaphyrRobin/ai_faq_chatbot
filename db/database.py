@@ -3,12 +3,9 @@ import logging
 from langchain_community.vectorstores.pgvector import PGVector
 from langchain_huggingface import HuggingFaceEmbeddings
 from settings import COLLECTION_NAME
+from settings import DATABASE_URL
 from sqlalchemy import create_engine
 from sqlalchemy import text
-
-# Please set it
-# e.g DATABASE_URL="postgresql+psycopg2://<user>:<password>@localhost:5432/<db_name>"
-DATABASE_URL = os.getenv("DATABASE_URL")
 
 # SQLAlchemy engine
 engine = create_engine(DATABASE_URL)
