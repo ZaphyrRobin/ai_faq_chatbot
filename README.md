@@ -1,4 +1,4 @@
-# 🧠 Local AI Chatbot (llama.cpp + pgvector)
+# 📚 Local AI RAG-based FAQ Chatbot
 
 A blazing-fast, fully local, and open-source chatbot CLI powered by:
 
