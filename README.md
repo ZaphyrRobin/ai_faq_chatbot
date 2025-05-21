@@ -5,6 +5,7 @@ A blazing-fast, fully local, and open-source chatbot CLI powered by:
 - ⚡ [`llama-cpp-python`](https://github.com/abetlen/llama-cpp-python) for LLM inference (e.g., Mistral-7B GGUF)
 - 🧠 [`sentence-transformers`](https://www.sbert.net/) for embedding generation
 - 🗃️ PostgreSQL + [`pgvector`](https://github.com/pgvector/pgvector) for semantic vector search
+- 🕸️ Web crawling [FAQ] (https://makersplace.com/faq/) as domain knowledge
 
 ---
 
