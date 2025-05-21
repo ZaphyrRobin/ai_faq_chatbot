@@ -1,0 +1,17 @@
+# Services
+httpx
+
+# web crawler
+beautifulsoup4
+
+# Database
+psycopg2-binary
+sqlalchemy
+pgvector
+
+# Embedding and LLM
+sentence-transformers
+llama-cpp-python
+langchain
+langchain-community
+langchain-huggingface
