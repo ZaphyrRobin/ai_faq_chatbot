@@ -15,9 +15,6 @@ def init_db():
         conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector;"))
         conn.commit()
 
-def get_pg_connection():
-    return DATABASE_URL
-
 def get_vector_store() -> PGVector:
     return PGVector(
         connection=DATABASE_URL,
