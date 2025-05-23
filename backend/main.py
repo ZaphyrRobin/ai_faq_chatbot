@@ -26,6 +26,8 @@ app.add_middleware(
 
 
 async def main():
+    init_db() # run only once actually
+
     parser = argparse.ArgumentParser(description="Pass the question")
     parser.add_argument("-q", "--question", help="Input: question text", required=True)
     parser.add_argument("-u", "--urls", help="Input: web page url to crawl from, split by comma")
@@ -45,11 +47,10 @@ async def main():
     
     logger = logging.getLogger(__name__)
 
+    # Parsing args
     args = parser.parse_args()
     question = args.question # e.g "How to list NFT?"
     urls = args.urls # e.g "https://makersplace.com/faq/"
-
-    init_db() # run only once actually
 
     # Web crawler
     if urls:

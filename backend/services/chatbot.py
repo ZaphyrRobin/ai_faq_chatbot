@@ -1,6 +1,8 @@
 import logging
 from db.database import get_vector_store
 from llama_cpp import Llama
+from services.cache import cache_answer
+from services.cache import get_cached_answer
 from settings import LLM_MODEL_PATH
 
 logger = logging.getLogger(__name__)
@@ -15,7 +17,7 @@ llm = Llama(
 # Using PGVector
 retriever = get_vector_store().as_retriever()
 
-def get_answer(question: str) -> str:
+def get_answer_core(question: str) -> str:
     # Retrieve relevant documents from PGVector
     docs = retriever.invoke(question)
     context = "\n".join([doc.page_content for doc in docs])
@@ -36,3 +38,13 @@ def get_answer(question: str) -> str:
     logger.debug(f"✅ Retriever\n{context}")
     logger.debug(f"✅ output {output}")
     return output["choices"][0]["text"].strip()
+
+
+def get_answer(question: str) -> str:
+    result = get_cached_answer(question)
+    if result:
+        return result
+
+    answer = get_answer_core(question)
+    cache_answer(question=question, answer=answer)
+    return answer

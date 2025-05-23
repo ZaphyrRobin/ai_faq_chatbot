@@ -1,6 +1,6 @@
 # 📚 Local AI RAG-based FAQ Chatbot
 
-A blazing-fast, fully local, and open-source chatbot CLI powered by:
+A blazing-fast, fully local, and open-source chatbot support both CI and Web UI, powered by:
 
 - ⚡ [`llama-cpp-python`](https://github.com/abetlen/llama-cpp-python) for LLM inference (e.g., Mistral-7B GGUF)
 - 🧠 [`sentence-transformers`](https://www.sbert.net/) for embedding generation
@@ -110,17 +110,21 @@ cd backend
 python3 -m uvicorn main:app --reload
 ```
 
-### 8. [Optional] CLI Commands
+### 8. Local Urls
+Visit backend API: http://localhost:8000/docs
+
+Visit frontend React UI: http://localhost:3000
+
+
+### 9. [Optional] CLI Commands
 ```
 # -v meaning enabled logging in INFO level
 # -u the page url that the web crawler starts from. Split in comma if multiple urls
 # -q the question string
 cd backend
 python3 main.py -v -u "https://makersplace.com/faq/" -q "What is bitcoin?"
-```
 
-### 9. Output Example
-```
+...
 2025-05-21 08:30:25 [INFO] root: ✅ All embeddings deleted from langchain_pg_embedding.
 2025-05-21 08:30:26 [INFO] httpx: HTTP Request: GET https://makersplace.com/faq/ "HTTP/1.1 200 OK"
 2025-05-21 09:28:39 [INFO] utils.web_crawler: ✅ Fetched 82 entries.
