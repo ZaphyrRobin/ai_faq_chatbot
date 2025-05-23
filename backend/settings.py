@@ -1,4 +1,6 @@
 import os
+import redis
+from langchain_huggingface import HuggingFaceEmbeddings
 
 COLLECTION_NAME = "faq_docs"
 
@@ -12,4 +14,7 @@ LLM_MODEL_PATH = os.getenv("LLM_MODEL_PATH", "./models/mistral-7b-instruct-v0.1.
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Embedding model
-EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+EMBEDDER = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+
+# Redis
+REDIS_CLIENT = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)

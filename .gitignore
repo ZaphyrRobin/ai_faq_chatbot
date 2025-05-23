@@ -1,4 +1,6 @@
-/models/
-/venv/
-__pycache__/
-*.pyc
+# Frontend
+/frontend/node_modules/
+
+# Backend
+/backend/venv/
+/backend/models/

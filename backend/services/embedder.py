@@ -1,6 +1,6 @@
 import logging
 from db.database import get_vector_store
-from langchain.schema import Document
+from langchain_core.documents import Document
 from typing import List
 
 logger = logging.getLogger(__name__)

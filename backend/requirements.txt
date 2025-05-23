@@ -1,7 +1,14 @@
-# Services
-httpx
+# Web Services
+fastapi
+uvicorn
+redis
+
+# NLP
+nltk
+numpy
 
 # web crawler
+httpx
 beautifulsoup4
 
 # Database
@@ -11,6 +18,7 @@ pgvector
 
 # Embedding and LLM
 sentence-transformers
-llama-cpp-python
+llama-cpp-python==0.2.72 --prefer-binary
+langchain_core
 langchain-huggingface
 langchain-postgres
