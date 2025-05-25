@@ -63,8 +63,8 @@ Set up your database (if not already created):
 psql -U postgres
 
 -- In psql
-CREATE USER chatbot_user WITH PASSWORD 'chatbotai';
-CREATE DATABASE chatbot OWNER chatbot_user;
+CREATE USER <db_username> WITH PASSWORD <db_passport>;
+CREATE DATABASE chatbot OWNER <db_username>;
 \q
 ```
 
@@ -77,7 +77,7 @@ ALTER COLUMN cmetadata TYPE JSONB USING cmetadata::jsonb;
 export your DATABASE_URL:
 ```
 cd backend
-export DATABASE_URL="postgresql+psycopg2://chatbot_user:chatbotai@localhost:5432/chatbot"
+export DATABASE_URL="postgresql+psycopg2://<db_username>:<db_passport>@localhost:5432/chatbot"
 ```
 
 ### 4. Download an LLM Model
@@ -111,12 +111,27 @@ python3 -m uvicorn main:app --reload
 ```
 
 ### 8. Local Urls
-Visit backend API: http://localhost:8000/docs
+Visit backend API docs: http://localhost:8000/docs
 
-Visit frontend React UI: http://localhost:3000
+Visit frontend React UI: http://localhost:5173/
 
+### 9. Sum up - to start web UI
 
-### 9. [Optional] CLI Commands
+NOTE: If you like to use different url, please adjust the web crawler logic at utils/web_crawler.py
+
+```
+cd backend
+brew services start redis
+export DATABASE_URL="postgresql+psycopg2://<db_username>:<db_passport>@localhost:5432/chatbot"
+python3 main.py -v -u "https://makersplace.com/faq/" -q "What is bitcoin?"
+python3 -m uvicorn main:app --reload
+
+cd frontend
+npm run dev
+```
+Web UI at: http://localhost:5173/
+
+### 10. [Optional] CLI Commands
 ```
 # -v meaning enabled logging in INFO level
 # -u the page url that the web crawler starts from. Split in comma if multiple urls
