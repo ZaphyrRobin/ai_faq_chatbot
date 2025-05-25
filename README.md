@@ -117,7 +117,7 @@ Visit frontend React UI: http://localhost:5173/
 
 ### 9. Sum up - to start web UI
 
-NOTE: If you like to use different url, please adjust the web crawler logic at utils/web_crawler.py
+#### NOTE: If you use different url, please adjust the web crawler logic at utils/web_crawler.py accordingly.
 
 ```
 cd backend
@@ -129,7 +129,7 @@ python3 -m uvicorn main:app --reload
 cd frontend
 npm run dev
 ```
-Web UI at: http://localhost:5173/
+Web UI: http://localhost:5173/
 
 ### 10. [Optional] CLI Commands
 ```
